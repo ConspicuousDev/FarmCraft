@@ -19,7 +19,11 @@ public class FarmCraft extends JavaPlugin {
         Methods.consoleLog("&cPlugin desabilitado.");
     }
 
-    public String testFunc(){
+    public String a() {
+        return "b";
+    }
+
+    public String testFunc() {
         return "a";
     }
 }
