@@ -4,3 +4,9 @@ version: 1.0
 authors:
   - Omniscient
   - IkerFanta
+commands:
+  farmcraft:
+    usage: /farmcraft [help]
+    description: Main plugin command.
+    aliases:
+      - fc
