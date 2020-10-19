@@ -9,7 +9,6 @@ public class FarmCraft extends JavaPlugin {
     public static String PREFIX = "&e[&fFarmCraft&e]";
 
     public void onEnable() {
-        puta que patriur duri fgn fgkngfdkngdknfgdfkngdfgnk dfgkn dfgndfkgjfkjndfknjdfnjkdfnkjfdkjnfdnjkfdkjnnnnnnnnn
         instance = this;
         Definitions.listeners();
         Definitions.commands();
