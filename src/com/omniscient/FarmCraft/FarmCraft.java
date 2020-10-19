@@ -10,6 +10,6 @@ public class FarmCraft extends JavaPlugin {
         Methods.consoleLog("&aPlugin inicializado.");
     }
     public void onDisable(){
-
+        Methods.consoleLog("&cPlugin desabilitado.");
     }
 }
