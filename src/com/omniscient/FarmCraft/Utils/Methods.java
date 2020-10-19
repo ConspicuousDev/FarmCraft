@@ -12,8 +12,4 @@ public class Methods {
     public static void consoleLog(String string) {
         Bukkit.getConsoleSender().sendMessage(color(FarmCraft.PREFIX + " &f" + string));
     }
-
-    public static void kick() {
-
-    }
 }
