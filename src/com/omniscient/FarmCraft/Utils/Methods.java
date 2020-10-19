@@ -8,7 +8,6 @@ public class Methods {
     public static String color(String string) {
         return ChatColor.translateAlternateColorCodes('&', string);
     }
-
     public static void consoleLog(String string) {
         Bukkit.getConsoleSender().sendMessage(color(FarmCraft.PREFIX + " &f" + string));
     }
