@@ -19,7 +19,7 @@ public class FarmCraft extends JavaPlugin {
         Methods.consoleLog("&cPlugin desabilitado.");
     }
 
-    public void testVoidLindo() {
-        Methods.consoleLog("lindo");
+    public String testFunc(){
+        return "a";
     }
 }
