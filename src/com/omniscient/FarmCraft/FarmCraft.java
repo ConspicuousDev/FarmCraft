@@ -20,6 +20,6 @@ public class FarmCraft extends JavaPlugin {
     }
 
     public String testFunc(){
-        return "a";
+        return "b";
     }
 }
