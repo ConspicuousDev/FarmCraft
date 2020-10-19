@@ -7,7 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class FarmCraft extends JavaPlugin {
     public static FarmCraft instance;
-    public static String PREFIX = "&e[&fFarmCraft&e]";
+    public static String PREFIX = "&e[&fFarm&bCraft&e]";
 
     public void onEnable() {
         instance = this;
