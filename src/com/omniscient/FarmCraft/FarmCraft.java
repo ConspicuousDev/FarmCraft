@@ -25,5 +25,9 @@ public class FarmCraft extends JavaPlugin {
 
     public String testFunc() {
         return "a";
+    };
+
+    public String testeDiagnosticsPinto(){
+        return "b";
     }
 }
