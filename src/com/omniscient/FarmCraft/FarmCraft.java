@@ -14,7 +14,7 @@ public class FarmCraft extends JavaPlugin {
         Database.connect();
         Definitions.listeners();
         Definitions.commands();
-        Methods.consoleLog("&aPlugin inicializado.");
+        Methods.consoleLog("&aPlugin inicializafdo.");
     }
 
     public void onDisable() {
