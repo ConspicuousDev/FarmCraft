@@ -39,7 +39,7 @@ public class ItemCraftListener implements Listener {
                         ItemStack recipeNotFoundItemStack = new ItemStack(Material.BARRIER, 1, (byte) 0);
                         ItemMeta recipeNotFoundItemMeta = recipeNotFoundItemStack.getItemMeta();
                         recipeNotFoundItemMeta.setDisplayName(Methods.color("&cA receita não foi encontrada!"));
-                        recipeNotFoundItemMeta.setLore(Methods.getLoreLines("&7Para ver todas as receitas, utilize o &aMenu&7 no seu inventário.", "&7"));
+                        recipeNotFoundItemMeta.setLore(Methods.getLoreLines(Arrays.asList("&7Para ver todas as receitas, utilize o &aMenu&7 no seu inventário.")));
                         recipeNotFoundItemStack.setItemMeta(recipeNotFoundItemMeta);
                         e.getClickedInventory().setItem(outputSlot, recipeNotFoundItemStack);
                         p.updateInventory();
@@ -90,7 +90,7 @@ public class ItemCraftListener implements Listener {
                     ItemStack recipeNotFoundItemStack = new ItemStack(Material.BARRIER, 1, (byte) 0);
                     ItemMeta recipeNotFoundItemMeta = recipeNotFoundItemStack.getItemMeta();
                     recipeNotFoundItemMeta.setDisplayName(Methods.color("&cA receita não foi encontrada!"));
-                    recipeNotFoundItemMeta.setLore(Methods.getLoreLines("&7Para ver todas as receitas, utilize o &aMenu&7 no seu inventário.", "&7"));
+                    recipeNotFoundItemMeta.setLore(Methods.getLoreLines(Arrays.asList("&7Para ver todas as receitas, utilize o &aMenu&7 no seu inventário.")));
                     recipeNotFoundItemStack.setItemMeta(recipeNotFoundItemMeta);
                     e.getClickedInventory().setItem(outputSlot, recipeNotFoundItemStack);
                     p.updateInventory();
@@ -139,13 +139,13 @@ public class ItemCraftListener implements Listener {
         ItemStack comingSoonItemStack = new ItemStack(Material.BARRIER, 1, (byte) 0);
         ItemMeta comingSoonItemMeta = comingSoonItemStack.getItemMeta();
         comingSoonItemMeta.setDisplayName(Methods.color("&cEm Breve"));
-        comingSoonItemMeta.setLore(Methods.getLoreLines("&7Esta utilidade chegará logo ao servidor.", "&7"));
+        comingSoonItemMeta.setLore(Methods.getLoreLines(Arrays.asList("&7Esta utilidade chegará logo ao servidor.")));
         comingSoonItemStack.setItemMeta(comingSoonItemMeta);
 
         ItemStack closeItemStack = new ItemStack(Material.BARRIER, 1, (byte) 0);
         ItemMeta closeItemMeta = closeItemStack.getItemMeta();
         closeItemMeta.setDisplayName(Methods.color("&cFechar"));
-        closeItemMeta.setLore(Methods.getLoreLines("&7Clique aqui para fechar a Mesa de Trabalho.", "&7"));
+        closeItemMeta.setLore(Methods.getLoreLines(Arrays.asList("&7Clique aqui para fechar a Mesa de Trabalho.")));
         closeItemStack.setItemMeta(closeItemMeta);
 
         ItemStack wrongIndicatorItemStack = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 14);
@@ -156,7 +156,7 @@ public class ItemCraftListener implements Listener {
         ItemStack recipeNotFoundItemStack = new ItemStack(Material.BARRIER, 1, (byte) 0);
         ItemMeta recipeNotFoundItemMeta = recipeNotFoundItemStack.getItemMeta();
         recipeNotFoundItemMeta.setDisplayName(Methods.color("&cA receita não foi encontrada!"));
-        recipeNotFoundItemMeta.setLore(Methods.getLoreLines("&7Para ver todas as receitas, utilize o &aMenu&7 no seu inventário.", "&7"));
+        recipeNotFoundItemMeta.setLore(Methods.getLoreLines(Arrays.asList("&7Para ver todas as receitas, utilize o &aMenu&7 no seu inventário.")));
         recipeNotFoundItemStack.setItemMeta(recipeNotFoundItemMeta);
 
         for (int i = 0; i < 54; i++) {

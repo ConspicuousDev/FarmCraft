@@ -204,7 +204,7 @@ public class PotionListener implements Listener {
         ItemStack closeItemStack = new ItemStack(Material.BARRIER, 1, (byte) 0);
         ItemMeta closeItemMeta = closeItemStack.getItemMeta();
         closeItemMeta.setDisplayName(Methods.color("&cFechar"));
-        closeItemMeta.setLore(Methods.getLoreLines("&7Clique aqui para fechar o Estande de Poções.", "&7"));
+        closeItemMeta.setLore(Methods.getLoreLines(Arrays.asList("&7Clique aqui para fechar o Estande de Poções.")));
         closeItemStack.setItemMeta(closeItemMeta);
 
         for (int i = 0; i < 54; i++) {

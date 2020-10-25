@@ -27,7 +27,7 @@ public class Methods {
         Bukkit.getConsoleSender().sendMessage(color(FarmCraft.PREFIX + " &f" + string));
     }
 
-    public static List<String> getLore(List<String> loreParts) {
+    public static List<String> getLoreLines(List<String> loreParts) {
         int maxChars = 40;
         List<String> loreLines = new ArrayList<>();
         for (String s : loreParts) {
@@ -71,7 +71,7 @@ public class Methods {
         ItemStack itemStack = new ItemStack(material, 1, (byte) b);
         ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.setDisplayName(color(name));
-        itemMeta.setLore(getLore(lore));
+        itemMeta.setLore(getLoreLines(lore));
         itemStack.setItemMeta(itemMeta);
         return itemStack;
     }

@@ -192,13 +192,13 @@ public class PortalListener implements Listener {
         ItemStack closeItemStack = new ItemStack(Material.BARRIER, 1, (byte) 0);
         ItemMeta closeItemMeta = closeItemStack.getItemMeta();
         closeItemMeta.setDisplayName(Methods.color("&cFechar"));
-        closeItemMeta.setLore(Methods.getLoreLines("&7Clique aqui para fechar o Seletor de Terrenos.", "&7"));
+        closeItemMeta.setLore(Methods.getLoreLines(Arrays.asList("&7Clique aqui para fechar o Seletor de Terrenos.")));
         closeItemStack.setItemMeta(closeItemMeta);
 
         ItemStack emptyTerrainSlotItemStack = new ItemStack(Material.STAINED_GLASS_PANE, 1, (byte) 8);
         ItemMeta emptyTerrainSlotItemMeta = emptyTerrainSlotItemStack.getItemMeta();
         emptyTerrainSlotItemMeta.setDisplayName(Methods.color("&cTerreno vago"));
-        emptyTerrainSlotItemMeta.setLore(Methods.getLoreLines("&7Para preencher esse espaço com um novo terreno, adquira-o nesse país.", "&7"));
+        emptyTerrainSlotItemMeta.setLore(Methods.getLoreLines(Arrays.asList("&7Para preencher esse espaço com um novo terreno, adquira-o nesse país.")));
         emptyTerrainSlotItemStack.setItemMeta(emptyTerrainSlotItemMeta);
 
         int t = 0;
@@ -207,13 +207,13 @@ public class PortalListener implements Listener {
             ItemMeta terrainSlotItemMeta = terrainSlotItemStack.getItemMeta();
             terrainSlotItemMeta.setDisplayName(Methods.color("&aTerreno " + (t + 1)));
             List<String> lore = new ArrayList<>();
-            lore.addAll(Methods.getLoreLines("&7Este espaço de terreno já está ocupado.", "&7"));
+            lore.addAll(Methods.getLoreLines(Arrays.asList("&7Este espaço de terreno já está ocupado.")));
             lore.add("");
-            lore.addAll(Methods.getLoreLines(" &fCompanhia: " + terrain.getCompany().getName(), "&7"));
-            lore.addAll(Methods.getLoreLines(" &fPaís: " + terrain.getCountry().getName(), "&7"));
-            lore.addAll(Methods.getLoreLines(" &fBioma: " + terrain.getTerrainType().getName(), "&7"));
+            lore.addAll(Methods.getLoreLines(Arrays.asList(" &fCompanhia: " + terrain.getCompany().getName())));
+            lore.addAll(Methods.getLoreLines(Arrays.asList(" &fPaís: " + terrain.getCountry().getName())));
+            lore.addAll(Methods.getLoreLines(Arrays.asList(" &fBioma: " + terrain.getTerrainType().getName())));
             lore.add("");
-            lore.addAll(Methods.getLoreLines("&aClique para viajar até o terreno.", "&7"));
+            lore.addAll(Methods.getLoreLines(Arrays.asList("&aClique para viajar até o terreno.")));
             terrainSlotItemMeta.setLore(lore);
             terrainSlotItemStack.setItemMeta(terrainSlotItemMeta);
             NBTItem terrainSlotNBTItem = new NBTItem(terrainSlotItemStack);

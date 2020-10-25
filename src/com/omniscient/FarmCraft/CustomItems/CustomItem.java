@@ -59,10 +59,10 @@ public enum CustomItem {
         List<String> lore = new ArrayList<>();
         switch (potionItemType) {
             case FLASK:
-                lore.addAll(Methods.getLoreLines("Frasco para poções", "&8"));
+                lore.addAll(Methods.getLoreLines(Arrays.asList("Frasco para poções")));
                 break;
             case INGREDIENT:
-                lore.addAll(Methods.getLoreLines("Ingrediente de poções", "&8"));
+                lore.addAll(Methods.getLoreLines(Arrays.asList("Ingrediente de poções")));
                 break;
             case NONE:
                 break;
@@ -71,18 +71,18 @@ public enum CustomItem {
             lore.add("");
             for (Enchantment enchantment : enchantments) {
                 lore.add(Methods.color("&9" + enchantment.getName() + " " + enchantment.getLevel()));
-                lore.addAll(Methods.getLoreLines(enchantment.getDescription(), "&7"));
+                lore.addAll(Methods.getLoreLines(Arrays.asList(enchantment.getDescription())));
             }
             lore.add("");
         }
         if (description != null) {
-            lore.addAll(Methods.getLoreLines(description, "&7"));
+            lore.addAll(Methods.getLoreLines(Arrays.asList(description)));
         }
         lore.add("");
         for (Ability ability : abilities) {
             if (!ability.isHidden()) {
                 lore.add(Methods.color("&6") + ability.getName() + " " + Methods.color("&e&l") + ability.getInput());
-                lore.addAll(Methods.getLoreLines(ability.getDescription(), "&7"));
+                lore.addAll(Methods.getLoreLines(Arrays.asList(ability.getDescription())));
                 lore.add(Methods.color("&8Cooldown: " + ability.getCooldown() + "s"));
                 lore.add("");
             }
