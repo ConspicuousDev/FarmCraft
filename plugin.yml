@@ -10,3 +10,9 @@ commands:
     description: Main plugin command.
     aliases:
       - fc
+  rank:
+    usage: /rank
+    description: Main rank command.
+  stats:
+    usage: /stats
+    description: Main stats command.

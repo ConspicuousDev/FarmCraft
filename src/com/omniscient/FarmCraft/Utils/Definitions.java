@@ -1,6 +1,7 @@
 package com.omniscient.FarmCraft.Utils;
 
 import com.omniscient.FarmCraft.Block.BlockListener;
+import com.omniscient.FarmCraft.Commands.CommandListener;
 import com.omniscient.FarmCraft.Commands.FarmCraftCommand;
 import com.omniscient.FarmCraft.Commands.RankCommand;
 import com.omniscient.FarmCraft.Commands.StatsCommand;
@@ -30,8 +31,7 @@ public class Definitions {
         Bukkit.getServer().getPluginManager().registerEvents(new DeathListener(), FarmCraft.instance);
         Bukkit.getServer().getPluginManager().registerEvents(new PotionListener(), FarmCraft.instance);
         Bukkit.getServer().getPluginManager().registerEvents(new EntityListener(), FarmCraft.instance);
-        //recode below
-        //Bukkit.getServer().getPluginManager().registerEvents(new NPCListener(), FarmCraft.instance);
+        Bukkit.getServer().getPluginManager().registerEvents(new CommandListener(), FarmCraft.instance);
     }
 
     public static void commands() {

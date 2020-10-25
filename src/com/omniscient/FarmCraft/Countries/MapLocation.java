@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 public enum MapLocation {
-    VILLAGE_BRAZIL("&bVila", Country.BRAZIL, -119, 50, -202, 41, 100, 20, Arrays.asList(Material.STAINED_CLAY)),
+    VILLAGE_BRAZIL("&bVila", Country.BRAZIL, -119, 50, -202, 41, 100, 20, Arrays.asList(Material.STONE)),
     AUCTION_HOUSE_BRAZIL("&6Leiloeiro", Country.BRAZIL, -19, 60, -102, -59, 89, -80, Arrays.asList()),
     YOUR_TERRAIN("&aSua Terra", Country.NONE, 0, 0, 0, 0, 0, 0, Collections.emptyList()),
     NONE("&7Nenhum", Country.NONE, 0, 0, 0, 0, 0, 0, Collections.emptyList());

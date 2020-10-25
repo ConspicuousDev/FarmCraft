@@ -56,7 +56,7 @@ public class FarmCraft extends JavaPlugin {
                 companyList.put(company.getID(), company);
             }
         } catch (SQLException e) {
-            Methods.consoleLog("&cAs Companies não puderam ser carregadas corretamente!");
+            Methods.consoleLog("&cAs Companhias não puderam ser carregadas corretamente!");
         }
         try {
             TimeListener.startClock();
