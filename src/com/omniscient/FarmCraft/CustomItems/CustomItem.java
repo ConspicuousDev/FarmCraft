@@ -15,14 +15,14 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum CustomItem {
-    STONE_RESOURCE("Pedra", null, Arrays.asList(new NotPlaceableAbility(), new SayNBTAbility()), Material.COBBLESTONE, (byte) 0, ItemRarity.COMMON, PotionItemType.NONE, ItemType.RESOURCE, null),
-    POTION("Poção", null, Arrays.asList(), Material.POTION, (byte) 0, ItemRarity.COMMON, PotionItemType.NONE, ItemType.NONE, null),
-    GRAPPLING_HOOK("Gancho", null, Arrays.asList(new GrappleAbility()), Material.FISHING_ROD, (byte) 0, ItemRarity.UNCOMMON, PotionItemType.NONE, ItemType.NONE, null),
-    SOIL("Amostra de Solo", "&7Utilize um &bAnalizador de Terreno &7para verificar a existência de minerais nessa terra.", Arrays.asList(new NotPlaceableAbility(), new SayNBTAbility()), Material.DIRT, (byte) 0, ItemRarity.COMMON, PotionItemType.NONE, ItemType.NONE, null),
-    ADMIN_ITEM("Admin Item", "&7Este item, forjado pelos fundadores desta terra, pertence somente a &cAdmins &7e &6Masters&7!", Arrays.asList(new NotPlaceableAbility()), Material.BEDROCK, (byte) 0, ItemRarity.SPECIAL, PotionItemType.NONE, ItemType.NONE, null),
-    PROSPECTOR_1000("Prospectora 1000", "&7Descubra a existência de minérios em seus terrenos para ficar rico!", Arrays.asList(new ProspectAbility(16)), Material.DIAMOND_PICKAXE, (byte) 0, ItemRarity.UNCOMMON, PotionItemType.NONE, ItemType.TOOL, new Recipe(Arrays.asList(null, null, null, null, ADMIN_ITEM, null, null, null, null), Arrays.asList(null, null, null, null, 1, null, null, null, null))),
-    PROSPECTOR_2000("Prospectora 2000", "&7Descubra a existência de minérios em seus terrenos para ficar rico!", Arrays.asList(new ProspectAbility(32)), Material.DIAMOND_PICKAXE, (byte) 0, ItemRarity.RARE, PotionItemType.NONE, ItemType.TOOL, new Recipe(Arrays.asList(null, null, null, null, ADMIN_ITEM, null, null, null, null), Arrays.asList(null, null, null, null, 1, null, null, null, null))),
-    PROSPECTOR_3000("Prospectora 3000", "&7Descubra a existência de minérios em seus terrenos para ficar rico!", Arrays.asList(new ProspectAbility(64)), Material.DIAMOND_PICKAXE, (byte) 0, ItemRarity.EPIC, PotionItemType.NONE, ItemType.TOOL, new Recipe(Arrays.asList(null, null, null, null, ADMIN_ITEM, null, null, null, null), Arrays.asList(null, null, null, null, 1, null, null, null, null)));
+    STONE_RESOURCE("Pedra", null, Arrays.asList(new NotPlaceableAbility(), new SayNBTAbility()), Material.COBBLESTONE, (byte) 0, ItemRarity.COMMON, ItemType.RESOURCE, null),
+    POTION("Poção", null, Arrays.asList(), Material.POTION, (byte) 0, ItemRarity.COMMON, ItemType.NONE, null),
+    GRAPPLING_HOOK("Gancho", null, Arrays.asList(new GrappleAbility()), Material.FISHING_ROD, (byte) 0, ItemRarity.UNCOMMON, ItemType.NONE, null),
+    SOIL("Amostra de Solo", "&7Utilize um &bAnalizador de Terreno &7para verificar a existência de minerais nessa terra.", Arrays.asList(new NotPlaceableAbility(), new SayNBTAbility()), Material.DIRT, (byte) 0, ItemRarity.COMMON, ItemType.NONE, null),
+    ADMIN_ITEM("Admin Item", "&7Este item, forjado pelos fundadores desta terra, pertence somente a &cAdmins &7e &6Masters&7!", Arrays.asList(new NotPlaceableAbility()), Material.BEDROCK, (byte) 0, ItemRarity.SPECIAL, ItemType.NONE, null),
+    PROSPECTOR_1000("Prospectora 1000", "&7Descubra a existência de minérios em seus terrenos para ficar rico!", Arrays.asList(new ProspectAbility(16), new SayNBTAbility()), Material.DIAMOND_PICKAXE, (byte) 0, ItemRarity.UNCOMMON, ItemType.TOOL, new Recipe(Arrays.asList(null, null, null, null, ADMIN_ITEM, null, null, null, null), Arrays.asList(null, null, null, null, 1, null, null, null, null))),
+    PROSPECTOR_2000("Prospectora 2000", "&7Descubra a existência de minérios em seus terrenos para ficar rico!", Arrays.asList(new ProspectAbility(32)), Material.DIAMOND_PICKAXE, (byte) 0, ItemRarity.RARE, ItemType.TOOL, new Recipe(Arrays.asList(null, null, null, null, ADMIN_ITEM, null, null, null, null), Arrays.asList(null, null, null, null, 1, null, null, null, null))),
+    PROSPECTOR_3000("Prospectora 3000", "&7Descubra a existência de minérios em seus terrenos para ficar rico!", Arrays.asList(new ProspectAbility(64)), Material.DIAMOND_PICKAXE, (byte) 0, ItemRarity.EPIC, ItemType.TOOL, new Recipe(Arrays.asList(null, null, null, null, ADMIN_ITEM, null, null, null, null), Arrays.asList(null, null, null, null, 1, null, null, null, null)));
 
     String id;
     String name;
@@ -31,12 +31,10 @@ public enum CustomItem {
     Material material;
     byte b;
     ItemRarity rarity;
-    PotionItemType potionItemType;
     ItemType itemType;
     Recipe recipe;
-    List<Enchantment> enchantments;
 
-    CustomItem(String name, String description, List<Ability> abilities, Material material, byte b, ItemRarity rarity, PotionItemType potionItemType, ItemType itemType, Recipe recipe) {
+    CustomItem(String name, String description, List<Ability> abilities, Material material, byte b, ItemRarity rarity, ItemType itemType, Recipe recipe) {
         this.id = name();
         this.name = name;
         this.description = description;
@@ -44,10 +42,8 @@ public enum CustomItem {
         this.material = material;
         this.b = b;
         this.rarity = rarity;
-        this.potionItemType = potionItemType;
         this.itemType = itemType;
         this.recipe = recipe;
-        this.enchantments = new ArrayList<>();
     }
 
     public ItemStack getItem() {
@@ -57,24 +53,6 @@ public enum CustomItem {
             itemMeta.setDisplayName(rarity.getColor() + name);
         }
         List<String> lore = new ArrayList<>();
-        switch (potionItemType) {
-            case FLASK:
-                lore.addAll(Methods.getLoreLines(Arrays.asList("Frasco para poções")));
-                break;
-            case INGREDIENT:
-                lore.addAll(Methods.getLoreLines(Arrays.asList("Ingrediente de poções")));
-                break;
-            case NONE:
-                break;
-        }
-        if (enchantments.size() > 0) {
-            lore.add("");
-            for (Enchantment enchantment : enchantments) {
-                lore.add(Methods.color("&9" + enchantment.getName() + " " + enchantment.getLevel()));
-                lore.addAll(Methods.getLoreLines(Arrays.asList(enchantment.getDescription())));
-            }
-            lore.add("");
-        }
         if (description != null) {
             lore.addAll(Methods.getLoreLines(Arrays.asList(description)));
         }
@@ -98,17 +76,9 @@ public enum CustomItem {
         nbtItem.setInteger("Unbreakable", 1);
         nbtItem.setInteger("HideFlags", 127);
         nbtItem.setString("ID", this.id);
-        nbtItem.setString("POTION_ITEM_TYPE", this.potionItemType.name());
+        nbtItem.setString("ENCHANTMENTS", "");
+        nbtItem.setString("RARITY", this.rarity.name());
         nbtItem.setString("ITEM_TYPE", this.itemType.name());
-        String enchantString = "";
-        for (Enchantment enchantment : enchantments) {
-            if (!enchantString.equals("")) {
-                enchantString += ",";
-            }
-            enchantString += enchantment.getID() + ":" + enchantment.getMaxLevel();
-        }
-        nbtItem.setString("ENCHANTMENTS", enchantString);
-        this.enchantments = new ArrayList<>();
         return nbtItem.getItem();
     }
 
@@ -140,32 +110,11 @@ public enum CustomItem {
         return rarity;
     }
 
-    public PotionItemType getPotionItemType() {
-        return potionItemType;
-    }
-
     public Recipe getRecipe() {
         return recipe;
     }
 
-    public void addEnchantment(Enchantment enchantment, int level) {
-        enchantment.setLevel(level);
-        this.enchantments.add(enchantment);
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
-
-    public void setRarity(ItemRarity rarity) {
-        this.rarity = rarity;
+    public ItemType getItemType() {
+        return this.itemType;
     }
 }

@@ -7,6 +7,8 @@ public enum ItemType {
     ROD("VARA DE PESCA"),
     TOOL("FERRAMENTA"),
     ARTIFACT("ARTEFATO"),
+    FLASK("FRASCO"),
+    INGREDIENT("INGREDIENTE"),
     NONE("");
 
     String ID;

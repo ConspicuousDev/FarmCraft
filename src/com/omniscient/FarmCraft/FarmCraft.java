@@ -42,6 +42,7 @@ public class FarmCraft extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        Methods.consoleLog("very gay");
         instance = this;
         Database.connect();
         Definitions.listeners();

@@ -5,6 +5,7 @@ import com.omniscient.FarmCraft.Countries.Country;
 import com.omniscient.FarmCraft.Countries.Month;
 import com.omniscient.FarmCraft.CustomItems.CustomItem;
 import com.omniscient.FarmCraft.CustomItems.Enchantment;
+import com.omniscient.FarmCraft.CustomItems.ItemManager;
 import com.omniscient.FarmCraft.FarmCraft;
 import com.omniscient.FarmCraft.Listeners.TimeListener;
 import com.omniscient.FarmCraft.Terrain.Terrain;
@@ -13,12 +14,11 @@ import com.omniscient.FarmCraft.User.User;
 import com.omniscient.FarmCraft.Utils.Methods;
 import de.tr7zw.nbtapi.NBTItem;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -202,33 +202,26 @@ public class FarmCraftCommand implements TabExecutor {
                     User user = FarmCraft.onlineUsers.get(p.getDisplayName());
                     if (args.length > 2) {
                         for (Enchantment enchantment : Enchantment.values()) {
-                            if (args[1].equals(enchantment.getID())) {
+                            if (args[1].equalsIgnoreCase(enchantment.getID())) {
                                 try {
                                     int level = Integer.parseInt(args[2]);
-                                    if (p.getItemInHand() != null) {
+                                    if (p.getItemInHand().getType() != Material.AIR) {
                                         NBTItem nbtItem = new NBTItem(p.getItemInHand());
                                         if (nbtItem.hasNBTData()) {
-                                            if (nbtItem.hasKey("ENCHANTMENTS")) {
-                                                CustomItem customItem = CustomItem.valueOf(nbtItem.getString("ID"));
-                                                customItem.addEnchantment(enchantment, level);
-                                                String enchantmentString = "";
-                                                if (!nbtItem.getString("ENCHANTMENTS").equals("")) {
-                                                    enchantmentString += ",";
-                                                }
-                                                enchantmentString += enchantment.getID() + ":" + level;
-                                                nbtItem.setString("ENCHANTMENTS", nbtItem.getString("ENCHANTMENTS") + enchantmentString);
-                                                p.sendMessage(nbtItem.getString("ENCHANTMENTS") + enchantmentString);
-                                                ItemStack itemStack = p.getItemInHand();
-                                                ItemMeta itemMeta = itemStack.getItemMeta();
-                                                itemMeta.setLore(customItem.getItem().getItemMeta().getLore());
-                                                itemStack.setItemMeta(itemMeta);
-                                                p.sendMessage(Methods.color("&aVocê aplicou o encantamento &9" + enchantment.getName() + " " + enchantment.getLevel() + " &aao item " + customItem.getItem().getItemMeta().getDisplayName() + "&a."));
+                                            if (nbtItem.hasKey("ID")) {
+                                                ItemManager.addEnchantment(p.getItemInHand(), enchantment, level);
+                                                p.getItemInHand().
+                                                        p.sendMessage(Methods.color("&aVocê aplicou o encantamento &9" + enchantment.getName() + " " + level + " &aao item " + CustomItem.valueOf(nbtItem.getString("ID")).getName() + "&a."));
                                                 return true;
+                                            } else {
+                                                p.sendMessage(Methods.color("&cO encantamento especificado não pode ser aplicado a este item."));
                                             }
                                         }
+                                    } else {
+                                        p.sendMessage(Methods.color("&cSegure um item para encantá-lo."));
                                     }
                                 } catch (NumberFormatException e) {
-                                    p.sendMessage(Methods.color("&cO nível precisa ser um número."));
+                                    p.sendMessage(Methods.color("&cO nível do encantamento precisa ser um número."));
                                 }
                                 return true;
                             }
